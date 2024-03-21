@@ -1,0 +1,147 @@
+LAB 2 
+
+1° CODIGO 
+
+class MarvelHeroes {
+  final String nombrePila;
+  final String nombrePersonaje;
+
+  MarvelHeroes({required this.nombrePila, required this.nombrePersonaje});
+
+  void presentarse() {
+    print(
+        'Hola max mi nombre es $nombrePila pero me conocen como tu amigable vecino $nombrePersonaje !!');
+  }
+}
+
+void main() {
+  MarvelHeroes spiderman = MarvelHeroes(
+    nombrePila: 'Peter Parker',
+    nombrePersonaje: 'SPIDERMAN',
+  );
+
+  spiderman.presentarse();
+}
+
+_________________________________________________________
+
+2° CODIGO
+	
+class DCHeroes {
+  final String nombrePila;
+  final String nombrePersonaje;
+
+  DCHeroes._({required this.nombrePila, required this.nombrePersonaje});
+
+  factory DCHeroes.fromDCJson(Map<String, String> dcJson) {
+    String nombrePila = dcJson['nombrePila'] ?? 'No tiene nombre';
+    String nombrePersonaje = dcJson['nombrePersonaje'] ?? 'No tiene alias';
+    return DCHeroes._(
+      nombrePila: nombrePila,
+      nombrePersonaje: nombrePersonaje,
+    );
+  }
+
+  void presentarse() {
+    print(
+        'Hola max mi nombre es $nombrePila pero me conoces como el caballero de la noche $nombrePersonaje !!');
+  }
+}
+
+void main() {
+  Map<String, String> DCJson = {
+    'nombrePila': 'Bruce WAYNE',
+    'nombrePersonaje': 'BATMAN',
+  };
+
+  DCHeroes batman = DCHeroes.fromDCJson(DCJson);
+  batman.presentarse();
+}
+
+
+
+SIN NOMBRE 
+
+class DCHeroes {
+  final String nombrePila;
+  final String nombrePersonaje;
+
+  DCHeroes.fromDCJson(Map<String, String> DCJson)
+      : nombrePila = DCJson['nombrePila'] ?? 'No tiene nombre',
+        nombrePersonaje = DCJson['nombrePersonaje'] ?? 'No tiene alias' {
+    if (nombrePila == 'No tiene nombre' && nombrePersonaje == 'No tiene alias') {
+      print('No tiene nombre');
+      print('No tiene alias');
+    } else {
+      if (nombrePila == 'No tiene nombre') {
+        print('No tiene nombre');
+      }
+      if (nombrePersonaje == 'No tiene alias') {
+        print('No tiene alias');
+      }
+    }
+  }
+
+  void presentarse() {
+    if (nombrePila != 'No tiene nombre' && nombrePersonaje != 'No tiene alias') {
+      print('Hola mi nombre es $nombrePila pero me conoces como el caballero de la noche $nombrePersonaje');
+    }
+  }
+}
+
+void main() {
+  Map<String, String> DCJson = {};
+
+  DCHeroes batman = DCHeroes.fromDCJson(DCJson);
+
+  batman.presentarse();
+}
+
+-------------------------------------------------------
+
+3°  PARA EJERCICIO 1
+
+class MarvelHeroes {
+  final String nombrePila;
+  final String nombrePersonaje;
+  final String superPoder;
+
+  MarvelHeroes({
+    required this.nombrePila,
+    required this.nombrePersonaje,
+    required this.superPoder,
+  });
+
+  MarvelHeroes.fromNamesAndPower(String pila, String personaje, String power)
+      : nombrePila = pila,
+        nombrePersonaje = personaje,
+        superPoder = power;
+
+  void presentarse() {
+    print(
+        'Hola mi nombre es $nombrePila pero me conocen como $nombrePersonaje, y mi superpoder es $superPoder');
+  }
+}
+
+void main() {
+  MarvelHeroes spiderman = MarvelHeroes(
+    nombrePila: 'Peter Parker',
+    nombrePersonaje: 'SPIDERMAN',
+    superPoder: 'Lanzar Telarañas',
+  );
+
+  MarvelHeroes ironman = MarvelHeroes.fromNamesAndPower(
+    'Tony Stark',
+    'IRON MAN',
+    'Volar y disparar rayos',
+  );
+
+  spiderman.presentarse();
+  ironman.presentarse();
+}
+
+
+PARA EJERCICIO 2 
+
+
+  
